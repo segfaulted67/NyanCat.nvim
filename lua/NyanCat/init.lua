@@ -2,11 +2,9 @@
 local M = {}
 
 M.opts = {
-    width = 30,
+    width = 20,
     cat = { ":>" },
     trail = "━",
-    
-    colors = {"Red", "Orange", "Yellow", "Green", "Blue", "Purple"},
 }
 
 function M.setup(opts)
@@ -29,7 +27,6 @@ function M.render()
             local frame = (current % #M.opts.cat) + 1
             table.insert(segments, M.opts.cat[frame])
         elseif i <= pos then
-            local color = M.opts.colors[(i-1) % #M.opts.colors + 1]
             table.insert(segments, ("%s"):format(M.opts.trail))
         else
           table.insert(segments, (" "))
