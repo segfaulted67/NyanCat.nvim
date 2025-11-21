@@ -1,0 +1,50 @@
+* NyanCat.nvim
+  A tiny progress bar inspired by Nyan mode in emacs [[https://github.com/TeMPOraL/nyan-mode][nyan mode]]
+** Installation
+   Using [[https://github.com/wbthomason/packer.nvim][packer.nvim]]
+   #+begin_src lua
+    use {
+      'segfaulted67/NyanCat.nvim',
+      opts = {
+        -- config goes here
+      }
+    }
+   #+end_src
+   Using [[https://github.com/folke/lazy.nvim][lazy.nvim]]
+   #+begin_src lua
+    return {
+      'segfaulted67/NyanCat.nvim',
+      opts = {
+        -- config goes here
+      }
+    }
+   #+end_src
+** Usage
+   with [[https://github.com/nvim-lualine/lualine.nvim][lualine.nvim]]
+   #+begin_src lua
+    ins_right { --- or ins_left as per our need
+      function()
+        local nyan = require("NyanCat")
+        return nyan.render()
+      end
+    }
+    require('lualine').setup(config)
+   #+end_src
+   with [[https://github.com/rebelot/heirline.nvim][heirline.nvim]]
+   #+begin_src lua
+    local nyan = {
+      provider = function() return require("NyanCat").render() end,
+    }
+    require('lualine').setup(config)
+
+    local StatusLine = {
+      -- your config
+      nyan,
+    }
+
+    require("heirline").setup({
+        statusline = StatusLine,
+    })
+   #+end_src
+
+
